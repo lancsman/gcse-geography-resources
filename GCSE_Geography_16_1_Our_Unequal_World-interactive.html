@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>GCSE Geography — 16.1 Our Unequal World</title>
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: Arial, sans-serif; background: #f4f6f9; color: #222; font-size: 15px; line-height: 1.6; }
+  header { background: #1B5E8A; color: white; padding: 1.5rem 2rem; }
+  header .sub { font-size: 13px; opacity: 0.8; margin-bottom: 4px; }
+  header h1 { font-size: 26px; font-weight: 700; }
+  header .tagline { font-size: 14px; opacity: 0.75; margin-top: 4px; }
+  .container { max-width: 860px; margin: 0 auto; padding: 1.5rem 1rem 3rem; }
+  .tabs { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 1.5rem; }
+  .tab { padding: 8px 18px; border: 1.5px solid #ccc; border-radius: 8px; background: white; color: #555; font-size: 13px; cursor: pointer; transition: all 0.15s; font-family: Arial, sans-serif; }
+  .tab:hover { background: #e8f0f8; }
+  .tab.active { background: #1B5E8A; color: white; border-color: #1B5E8A; font-weight: 600; }
+  .section { display: none; }
+  .section.visible { display: block; }
+  .card { background: white; border: 1px solid #dde3ea; border-radius: 10px; padding: 1.25rem; margin-bottom: 1rem; }
+  h2.sec-title { font-size: 18px; color: #1B5E8A; margin-bottom: 4px; }
+  p.sec-sub { font-size: 13px; color: #777; margin-bottom: 1.25rem; }
+  .factor-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin: 1rem 0; }
+  .factor-card { border-radius: 8px; padding: 14px; }
+  .env { background: #e6f4ea; } .env .ft { color: #1e6b2e; }
+  .eco { background: #fff4e0; } .eco .ft { color: #7a4b00; }
+  .soc { background: #e6f0fb; } .soc .ft { color: #1B5E8A; }
+  .pol { background: #fde8e8; } .pol .ft { color: #8b1a1a; }
+  .ft { font-weight: 700; font-size: 14px; margin-bottom: 4px; }
+  .fe { font-size: 13px; }
+  .stat-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 10px; margin: 1rem 0; }
+  .stat-card { background: #f0f4f8; border-radius: 8px; padding: 14px; text-align: center; }
+  .stat-num { font-size: 20px; font-weight: 700; color: #1B5E8A; }
+  .stat-lbl { font-size: 12px; color: #555; margin-top: 6px; line-height: 1.4; }
+  .key-term { display: inline-block; background: #fff4e0; color: #7a4b00; padding: 3px 10px; border-radius: 6px; font-size: 13px; font-weight: 600; margin: 3px; }
+  .tip { background: #fff8e6; border-left: 4px solid #f0b429; border-radius: 0 8px 8px 0; padding: 10px 14px; font-size: 13px; color: #5a3800; margin: 1rem 0; }
+  .tip strong { font-weight: 700; }
+  table.ct { width: 100%; border-collapse: collapse; font-size: 13px; margin: 1rem 0; }
+  table.ct th { background: #1B5E8A; color: white; padding: 10px 12px; text-align: left; }
+  table.ct td { padding: 9px 12px; border-bottom: 1px solid #e0e6ee; vertical-align: top; }
+  table.ct tr:nth-child(even) td { background: #f7fafd; }
+  .hdi-row { display: flex; align-items: center; gap: 10px; margin-bottom: 10px; }
+  .hdi-lbl { font-size: 12px; width: 100px; flex-shrink: 0; color: #555; }
+  .hdi-track { flex: 1; height: 16px; background: #e5eaf0; border-radius: 99px; overflow: hidden; }
+  .hdi-fill { height: 100%; border-radius: 99px; transition: width 0.9s ease; }
+  .hdi-val { font-size: 13px; font-weight: 700; min-width: 40px; color: #222; }
+  .quiz-q { margin-bottom: 1.75rem; }
+  .q-text { font-size: 14px; font-weight: 600; margin-bottom: 10px; }
+  .q-num { display: inline-flex; align-items: center; justify-content: center; background: #1B5E8A; color: white; width: 24px; height: 24px; border-radius: 50%; font-size: 12px; font-weight: 700; margin-right: 6px; flex-shrink: 0; vertical-align: middle; }
+  .opts { display: flex; flex-direction: column; gap: 7px; }
+  .opt { padding: 9px 14px; border: 1.5px solid #ccc; border-radius: 8px; background: white; color: #333; font-size: 13px; cursor: pointer; text-align: left; font-family: Arial, sans-serif; transition: all 0.12s; }
+  .opt:hover:not(:disabled) { background: #eaf2fb; }
+  .opt.correct { background: #e6f4ea; color: #1e6b2e; border-color: #4caf50; font-weight: 600; }
+  .opt.wrong { background: #fde8e8; color: #8b1a1a; border-color: #e57373; }
+  .fb { font-size: 12px; margin-top: 8px; padding: 8px 12px; border-radius: 7px; display: none; line-height: 1.5; }
+  .fb.show { display: block; }
+  .fb.ok { background: #e6f4ea; color: #1e6b2e; }
+  .fb.no { background: #fde8e8; color: #8b1a1a; }
+  .score-wrap { background: #e5eaf0; border-radius: 99px; height: 10px; margin: 8px 0; overflow: hidden; }
+  .score-fill { height: 100%; border-radius: 99px; background: #4caf50; transition: width 0.4s; }
+  .result-card { background: white; border: 1px solid #dde3ea; border-radius: 10px; padding: 1.25rem; display: none; margin-top: 1rem; }
+  .exam-step { border-left: 4px solid #ccc; padding-left: 14px; margin-bottom: 14px; }
+  .exam-step .label { font-size: 12px; font-weight: 700; margin-bottom: 4px; }
+  .exam-step p { font-size: 13px; color: #444; }
+  .step-k { border-color: #1B5E8A; } .step-k .label { color: #1B5E8A; }
+  .step-ag { border-color: #2d7a2d; } .step-ag .label { color: #2d7a2d; }
+  .step-dis { border-color: #c07000; } .step-dis .label { color: #c07000; }
+  .step-j { border-color: #888; } .step-j .label { color: #555; }
+  .score-bar-top { display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.25rem; font-size: 13px; color: #666; }
+  .score-bar-top span b { color: #1B5E8A; }
+  p { font-size: 14px; color: #444; line-height: 1.7; margin-bottom: 0.6rem; }
+  ul { padding-left: 1.4rem; margin-bottom: 0.6rem; }
+  li { font-size: 14px; color: #444; margin-bottom: 4px; }
+  @media (max-width: 520px) {
+    .factor-grid { grid-template-columns: 1fr; }
+    header h1 { font-size: 20px; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="sub">GCSE Geography · Unit 2, Section B · The Changing Economic World</div>
+  <h1>16.1 Our Unequal World</h1>
+  <div class="tagline">The Development Gap — interactive revision resource</div>
+</header>
+
+<div class="container">
+
+  <div class="score-bar-top">
+    <span>Work through each tab in order, then test yourself in the Quiz.</span>
+    <span id="score-disp"><b>0 / 0</b> correct</span>
+  </div>
+
+  <div class="tabs">
+    <button class="tab active" onclick="show('learn',this)">Learn</button>
+    <button class="tab" onclick="show('measures',this)">Measuring development</button>
+    <button class="tab" onclick="show('hdi',this)">HDI explorer</button>
+    <button class="tab" onclick="show('quiz',this)">Quiz</button>
+    <button class="tab" onclick="show('exam',this)">Exam practice</button>
+  </div>
+
+  <!-- LEARN -->
+  <div id="learn" class="section visible">
+    <h2 class="sec-title">What is development?</h2>
+    <p class="sec-sub">Core concepts and key vocabulary for 16.1</p>
+
+    <div class="card">
+      <p><strong>Development</strong> is the progress a country has made in terms of economic growth, use of technology, and human welfare. It is influenced by economic, environmental, social, and political factors.</p>
+      <p>The <strong>development gap</strong> is the difference in standards of living between the world's richest and poorest countries.</p>
+    </div>
+
+    <h2 class="sec-title" style="margin-bottom:8px;">Factors affecting development</h2>
+    <div class="factor-grid">
+      <div class="factor-card env"><div class="ft">Environmental</div><div class="fe">Natural hazards, climate, access to resources</div></div>
+      <div class="factor-card eco"><div class="ft">Economic</div><div class="fe">Trade, debt, foreign investment</div></div>
+      <div class="factor-card soc"><div class="ft">Social</div><div class="fe">Education, healthcare, access to safe water</div></div>
+      <div class="factor-card pol"><div class="ft">Political</div><div class="fe">Stable government, civil war, corruption</div></div>
+    </div>
+
+    <h2 class="sec-title" style="margin-top:1.5rem; margin-bottom:8px;">Country classifications</h2>
+    <div class="stat-grid">
+      <div class="stat-card"><div class="stat-num">HICs</div><div class="stat-lbl">GNI per capita above $12,535 — UK, most of Europe, North America, Australia.</div></div>
+      <div class="stat-card"><div class="stat-num">LICs</div><div class="stat-lbl">GNI per capita below $1,036 — most are in Africa.</div></div>
+      <div class="stat-card"><div class="stat-num">NEEs</div><div class="stat-lbl">Newly Emerging Economies — BRICS &amp; MINT countries experiencing rapid industrial growth.</div></div>
+    </div>
+
+    <div class="tip"><strong>Exam tip:</strong> BRICS = Brazil, Russia, India, China, South Africa. MINT = Mexico, Indonesia, Nigeria, Turkey. Learn both acronyms — they appear regularly in exam questions.</div>
+
+    <h2 class="sec-title" style="margin-top:1.5rem; margin-bottom:8px;">Key terms</h2>
+    <div class="card">
+      <span class="key-term">Development</span><span class="key-term">Development gap</span><span class="key-term">GNI per capita</span><span class="key-term">HDI</span><span class="key-term">HIC</span><span class="key-term">LIC</span><span class="key-term">NEE</span><span class="key-term">BRICS</span><span class="key-term">MINT</span><span class="key-term">Standard of living</span><span class="key-term">Quality of life</span>
+    </div>
+  </div>
+
+  <!-- MEASURES -->
+  <div id="measures" class="section">
+    <h2 class="sec-title">Measuring development</h2>
+    <p class="sec-sub">Comparing GNI and HDI as development indicators</p>
+
+    <table class="ct">
+      <thead><tr><th>Indicator</th><th>What it measures</th><th>Strengths</th><th>Limitations</th></tr></thead>
+      <tbody>
+        <tr><td><strong>GNI per capita</strong></td><td>Total value of goods and services a country produces, divided by population</td><td>Simple; easy to compare countries; used by the World Bank</td><td>It is an average — hides inequality within a country. A wealthy elite can inflate the figure.</td></tr>
+        <tr><td><strong>HDI</strong></td><td>Combines life expectancy, years of education, and GNI per head into a score 0–1</td><td>Broader view — reflects social as well as economic factors</td><td>Still an average; does not measure happiness, freedom, or women's rights</td></tr>
+      </tbody>
+    </table>
+
+    <div class="tip"><strong>Practice question (6 marks):</strong> "The HDI is the most effective measurement of development." Do you agree? Remember to define development, use evidence, and consider both sides.</div>
+
+    <div class="card">
+      <p><strong>Why HDI is widely used</strong></p>
+      <p>HDI is popular because it gives a more complete picture than GNI alone. By including life expectancy and education, it shows whether economic growth is actually improving people's lives — not just increasing national income. It allows countries to be ranked on a scale of 0 to 1, making comparisons straightforward.</p>
+      <p>However, even HDI cannot measure everything. Quality of life also depends on safety, political freedom, women's rights, and personal happiness — none of which appear in any single statistic.</p>
+    </div>
+  </div>
+
+  <!-- HDI EXPLORER -->
+  <div id="hdi" class="section">
+    <h2 class="sec-title">HDI explorer — 2019 data</h2>
+    <p class="sec-sub">See how countries compare on the Human Development Index (0–1 scale)</p>
+    <div id="hdi-bars" style="margin: 1rem 0;"></div>
+    <div class="card">
+      <p><strong>What do you notice?</strong></p>
+      <p>The highest-ranked countries are all in Europe. The ten lowest-ranked countries in 2019 were all in Africa. The UK ranked 13th with an HDI of 0.932.</p>
+      <p>Notice the gap between Norway (0.957) and Niger (0.394) — this is the development gap illustrated by a single number.</p>
+    </div>
+    <div class="tip"><strong>Remember:</strong> HDI values run from 0 to 1. The higher the value, the more developed the country. Norway = 0.957 (1st). Niger = 0.394 (189th, lowest).</div>
+  </div>
+
+  <!-- QUIZ -->
+  <div id="quiz" class="section">
+    <h2 class="sec-title">Knowledge check</h2>
+    <p class="sec-sub">Test your understanding of 16.1 — answers are marked automatically</p>
+    <div id="quiz-container"></div>
+    <div class="result-card" id="result-card">
+      <div id="result-text" style="font-size:16px; font-weight:700; margin-bottom:8px;"></div>
+      <div class="score-wrap"><div class="score-fill" id="result-bar" style="width:0%"></div></div>
+      <p style="font-size:13px; margin-top:8px; color:#555;">Review any incorrect answers above, then move on to the Exam practice tab.</p>
+    </div>
+  </div>
+
+  <!-- EXAM -->
+  <div id="exam" class="section">
+    <h2 class="sec-title">Exam practice</h2>
+    <p class="sec-sub">Structured guidance for the 6-mark question from the textbook</p>
+
+    <div class="card">
+      <p><strong>"The HDI is the most effective measurement of development." Do you agree? (6 marks)</strong></p>
+      <p>This is a <strong>judgement question</strong> — you must take a position and support it with evidence.</p>
+    </div>
+
+    <div class="card">
+      <p style="font-weight:700; margin-bottom:14px;">Answer framework</p>
+      <div class="exam-step step-k">
+        <div class="label">Step 1 — Define development (1 mark)</div>
+        <p>Development is the progress a country makes in terms of economic growth, technology, and human welfare.</p>
+      </div>
+      <div class="exam-step step-ag">
+        <div class="label">Step 2 — Agree with evidence (2 marks)</div>
+        <p>HDI is effective because it combines economic (GNI) and social (life expectancy, education) factors. Norway's HDI of 0.957 vs Niger's 0.394 clearly illustrates the scale of the development gap.</p>
+      </div>
+      <div class="exam-step step-dis">
+        <div class="label">Step 3 — Disagree / limitations (2 marks)</div>
+        <p>However, HDI cannot measure quality of life factors such as happiness, political freedom, safety, or gender equality. GNI figures within HDI are still averages and may disguise inequality within countries.</p>
+      </div>
+      <div class="exam-step step-j">
+        <div class="label">Step 4 — Overall judgement (1 mark)</div>
+        <p>Overall, HDI is one of the most useful composite measures available, but no single indicator can fully capture development — a range of measures gives a more accurate picture.</p>
+      </div>
+    </div>
+
+    <div class="tip"><strong>Exam tips:</strong> Always define development early in your answer. Use actual figures (HDI values, GNI thresholds). Consider both sides before giving your overall judgement.</div>
+
+    <div class="card">
+      <p style="font-weight:700; margin-bottom:10px;">Activities from the textbook</p>
+      <ol style="padding-left:1.4rem;">
+        <li style="margin-bottom:8px;">What is meant by the term 'development'?</li>
+        <li style="margin-bottom:8px;">What is the HDI and how is it calculated? Which countries recorded the highest and lowest HDI in 2019?</li>
+        <li style="margin-bottom:8px;">GNI is based on economic factors. What type of factors is HDI based upon?</li>
+        <li style="margin-bottom:8px;">GNI is an average figure for an entire country. Why might this not give a true picture of a country's level of development?</li>
+        <li style="margin-bottom:8px;">Suggest why the HDI is a widely used measure of development.</li>
+      </ol>
+    </div>
+  </div>
+
+</div><!-- /container -->
+
+<script>
+const hdiData = [
+  { country: "Norway (1st)", hdi: 0.957, color: "#1B5E8A" },
+  { country: "Ireland (2nd)", hdi: 0.955, color: "#1B5E8A" },
+  { country: "Switzerland (3rd)", hdi: 0.955, color: "#1B5E8A" },
+  { country: "UK (13th)", hdi: 0.932, color: "#2E75B6" },
+  { country: "Brazil — NEE", hdi: 0.765, color: "#2d7a2d" },
+  { country: "India — NEE", hdi: 0.645, color: "#2d7a2d" },
+  { country: "Nigeria — NEE", hdi: 0.539, color: "#2d7a2d" },
+  { country: "Niger (189th)", hdi: 0.394, color: "#c0392b" },
+];
+
+function buildHDI() {
+  const wrap = document.getElementById("hdi-bars");
+  hdiData.forEach(d => {
+    const row = document.createElement("div");
+    row.className = "hdi-row";
+    row.innerHTML = `<div class="hdi-lbl">${d.country}</div><div class="hdi-track"><div class="hdi-fill" id="hf-${d.country.replace(/\s/g,'')}" style="width:0%; background:${d.color};"></div></div><div class="hdi-val">${d.hdi}</div>`;
+    wrap.appendChild(row);
+  });
+  setTimeout(() => {
+    hdiData.forEach(d => {
+      const el = document.getElementById("hf-" + d.country.replace(/\s/g,''));
+      if (el) el.style.width = (d.hdi * 100) + "%";
+    });
+  }, 100);
+}
+
+const questions = [
+  { q: "What does GNI stand for?", opts: ["Global National Index","Gross National Income","General National Indicator","Growth and National Investment"], ans: 1, fb: "GNI = Gross National Income. It measures the total value of goods and services produced by a country, divided by its population (per capita)." },
+  { q: "Which organisation devised the HDI?", opts: ["World Bank","NATO","United Nations","European Union"], ans: 2, fb: "The HDI was devised by the United Nations to link wealth to health and education." },
+  { q: "What HDI value did Niger record in 2019?", opts: ["0.957","0.394","0.645","0.800"], ans: 1, fb: "Niger recorded an HDI of 0.394 in 2019 — the lowest of any country (ranked 189th)." },
+  { q: "Which of the following is NOT one of the three measures used to calculate HDI?", opts: ["Life expectancy at birth","Number of years of education","Birth rate","GNI per head"], ans: 2, fb: "HDI uses life expectancy, years of education, and GNI per head. Birth rate is not included." },
+  { q: "What GNI per capita threshold defines a Low Income Country (LIC)?", opts: ["Below $12,535","Below $5,000","Below $1,036","Below $500"], ans: 2, fb: "LICs are defined by the World Bank as those with GNI per capita below $1,036." },
+  { q: "Which of the following is a BRICS country?", opts: ["Mexico","Turkey","Indonesia","South Africa"], ans: 3, fb: "BRICS = Brazil, Russia, India, China, South Africa. Mexico, Turkey, and Indonesia are MINT countries." },
+  { q: "Why might GNI per capita not give a true picture of development?", opts: ["It only measures education","It is an average that hides inequality within a country","It does not include trade data","It is too expensive to calculate"], ans: 1, fb: "GNI per capita is an average — a wealthy elite can inflate the figure, disguising the poverty experienced by most citizens." },
+];
+
+let answered = 0, correct = 0;
+
+function buildQuiz() {
+  const c = document.getElementById("quiz-container");
+  questions.forEach((q, i) => {
+    const div = document.createElement("div");
+    div.className = "quiz-q";
+    div.innerHTML = `<div class="q-text"><span class="q-num">${i+1}</span>${q.q}</div><div class="opts">${q.opts.map((o,j)=>`<button class="opt" onclick="answer(this,${i},${j})">${o}</button>`).join("")}</div><div class="fb" id="fb-${i}"></div>`;
+    c.appendChild(div);
+  });
+}
+
+function answer(btn, qi, oi) {
+  const q = questions[qi];
+  const allBtns = btn.parentElement.querySelectorAll(".opt");
+  allBtns.forEach(b => b.disabled = true);
+  const fb = document.getElementById("fb-" + qi);
+  if (oi === q.ans) {
+    btn.className = "opt correct";
+    fb.className = "fb show ok";
+    fb.textContent = "Correct! " + q.fb;
+    correct++;
+  } else {
+    btn.className = "opt wrong";
+    allBtns[q.ans].className = "opt correct";
+    fb.className = "fb show no";
+    fb.textContent = "Not quite. " + q.fb;
+  }
+  answered++;
+  document.getElementById("score-disp").innerHTML = `<b>${correct} / ${answered}</b> correct`;
+  if (answered === questions.length) {
+    const rc = document.getElementById("result-card");
+    rc.style.display = "block";
+    document.getElementById("result-text").textContent = `You scored ${correct} out of ${questions.length}`;
+    document.getElementById("result-bar").style.width = Math.round(correct / questions.length * 100) + "%";
+  }
+}
+
+function show(id, btn) {
+  document.querySelectorAll(".section").forEach(s => s.classList.remove("visible"));
+  document.querySelectorAll(".tab").forEach(b => b.classList.remove("active"));
+  document.getElementById(id).classList.add("visible");
+  btn.classList.add("active");
+  if (id === "hdi") buildHDI();
+}
+
+buildQuiz();
+</script>
+</body>
+</html>
